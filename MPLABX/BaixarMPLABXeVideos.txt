@@ -1,0 +1,26 @@
+SanUSBLE Bluetooth Low Energy: https://play.google.com/store/apps/details?id=p.b.le
+Mais detalhes em: https://www.youtube.com/watch?v=a-e88G_YEsI , https://www.youtube.com/watch?v=zxxMINNZBzA , https://www.youtube.com/watch?v=Yi4e-
+
+Baixar MPLABX C18 e outros: https://drive.google.com/?tab=wo&authuser=0#folders/0B5332OAhnMe2STE4MFNBQ2dqYWM
+
+https://dl.dropboxusercontent.com/u/101922388/BaixarMPLABX_C18.pdf
+
+http://sanusb.blogspot.com.br/2014/09/compilando-com-xc8-e-gravando-o.html
+
+Videos relacionados:
+
+http://www.youtube.com/watch?v=6HBbMR2a2I0
+
+http://www.youtube.com/watch?v=s6BG8ZN0aDk
+
+http://www.youtube.com/watch?v=lB21b3zA4Ac
+
+http://www.youtube.com/watch?v=p9j7uQuOXS8
+
+http://www.youtube.com/watch?v=p9j7uQuOXS8
+
+http://www.youtube.com/watch?v=rSg_i3gHF3U
+
+http://www.youtube.com/watch?v=oBdpr29fFyg  
+
+http://www.youtube.com/watch?v=rSg_i3gHF3U
