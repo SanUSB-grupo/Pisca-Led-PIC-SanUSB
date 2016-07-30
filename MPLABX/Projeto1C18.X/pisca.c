@@ -1,4 +1,4 @@
-#include "SanUSB1.h" // 
+#include "SanUSB1.h" // https://www.youtube.com/watch?v=klucfceoTtA
 //short int A, B, saida, ledpisca;
 
 #pragma interrupt interrupcao //Tem que estar aqui ou dentro do firmware.c
