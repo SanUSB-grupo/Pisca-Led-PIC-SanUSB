@@ -1,4 +1,4 @@
-#include "SanUSB1X.h"
+#include "SanUSB1X.h" // https://www.youtube.com/watch?v=klucfceoTtA
 //bit A, B, saida, ledpisca;
 
 //#pragma interrupt interrupcao
