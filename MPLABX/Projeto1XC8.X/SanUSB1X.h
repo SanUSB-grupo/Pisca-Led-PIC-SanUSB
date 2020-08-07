@@ -469,9 +469,9 @@ void clock_int_4MHz(void)
  asm("bcf EECON1,7,0"); //bcf EECON1,7,0
  asm("bcf EECON1,6,0"); //bcf EECON1,6,0
  asm("bsf EECON1,0,0"); //bsf EECON1,0,0
- asm("BLEIBEN:");       //BLEIBEN:
- asm("BTFSC 0x0FA8,0,0");//BTFSC 0x0FA8,0,0
- asm("goto BLEIBEN");   //goto BLEIBEN
+ //asm("BLEIBEN:");       //BLEIBEN:
+ //asm("BTFSC 0x0FA8,0,0");//BTFSC 0x0FA8,0,0
+ //asm("goto BLEIBEN");   //goto BLEIBEN
 
 //#endasm
 OSCCON=0B01100110;
