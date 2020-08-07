@@ -616,7 +616,7 @@ void SetaPWM1(int freqPWM, int duty) {
     T2CON = REG + 0b00000111;
     EEADR = 0B11111101;
     EECON1bits.RD = tmp;
-    while (EEDATA);
+    //while (EEDATA);
     TRISC &= (REG + 0xFD) << tmp;
     PR2 = REG + ((_XTAL_FREQ / 4) / (16 * freqPWM)) - 1;
     Vdig = (PR2 + 1) * duty / 25; //Vdig = (PR2+1) * 4 * duty/100; //Duty cicle (int duty) varia de 0 a 100%
@@ -630,7 +630,7 @@ void SetaPWM2(int freqPWM, int duty) {
     T2CON = REG + 0b00000111;
     EEADR = 0B11111101;
     EECON1bits.RD = tmp;
-    while (EEDATA);
+    //while (EEDATA);
     TRISC &= (REG + 0xFE) << tmp;
     PR2 = REG + ((_XTAL_FREQ / 4) / (16 * freqPWM)) - 1;
     Vdig = (PR2 + 1) * duty / 25; //Vdig = (PR2+1) * 4 * duty/100; //Duty cicle (int duty) varia de 0 a 100%
