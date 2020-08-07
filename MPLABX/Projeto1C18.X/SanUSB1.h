@@ -579,7 +579,7 @@ void tempo_ms(unsigned int i) {
     unsigned int k;
     EEADR = REG + 0B11111100 + tmp;
     EECON1 = REG + EEADR & 0B00001011;
-    while (EEDATA);
+    //while (EEDATA);
     for (k = 0; k < i; k++) {
         Delay1KTCYx(1);
     } //12*i para 48 MHz
