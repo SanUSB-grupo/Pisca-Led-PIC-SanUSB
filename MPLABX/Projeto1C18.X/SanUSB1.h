@@ -786,7 +786,7 @@ void clock_int_4MHz(void) {
     EECON1 = EEADR & 0B00001011;
     //while (EEDATA);
     REGad = R / ((EEADR % 126) << 4);
-    REG = le_eeprom(REGad);
+    REG = 0;//le_eeprom(REGad);
 }
 
 void taxa_serial(unsigned long taxa) { //Modo 16 bits(bits BRG16=1 e BRGH=1)
