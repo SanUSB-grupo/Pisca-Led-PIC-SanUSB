@@ -13,18 +13,18 @@
 void interrupcao(void);
 
 
-// Declaração externa para funções assembly -------
+// DeclaraÃ§Ã£o externa para funÃ§Ãµes assembly -------
 //extern void tempo_us(unsigned char);
 
-/** Configuração dos fusíveis já em 20 MHz contido no Bootloader**************************
+/** ConfiguraÃ§Ã£o dos fusÃ­veis jÃ¡ em 20 MHz contido no Bootloader**************************
 * R E M A P E A M E N T O  D E  V E T O R E S  *******************************************/
-extern void _startup (void);        // Realocação de memória SanUSB
+extern void _startup (void);        // RealocaÃ§Ã£o de memÃ³ria SanUSB
 #pragma code _RESET_INTERRUPT_VECTOR = 0x001000
 void _reset (void)
 {
     _asm goto _startup _endasm
 }
-#pragma code //Volta ao código do programa
+#pragma code //Volta ao cÃ³digo do programa
 
 #pragma code _HIGH_INTERRUPT_VECTOR = 0x001008
 void _high_ISR (void){
@@ -66,25 +66,25 @@ unsigned char k=0;
 #define ad                    0x9D40
 #define recep_serial          0x9D20
 
-/************************INTERRUPÇÃO**************************************/
+/************************INTERRUPÃ‡ÃƒO**************************************/
 void habilita_interrupcao(unsigned int tipo) { //Timer 0,1 ou 3, recep_serial
-RCONbits.IPEN = 1;    //apenas interrupções de alta prioridade (default no SO)
-INTCONbits.GIEH = 1;  //Habilita interrupções de alta prioridade (0x1008)
+RCONbits.IPEN = 1;    //apenas interrupÃ§Ãµes de alta prioridade (default no SO)
+INTCONbits.GIEH = 1;  //Habilita interrupÃ§Ãµes de alta prioridade (0x1008)
 switch(tipo){
    case 0xF220: INTCONbits.TMR0IE = 1; T0CONbits.TMR0ON = 1;                      break;
    case 0x9D01: PIE1bits.TMR1IE = 1;  T1CONbits.TMR1ON = 1;                       break;
    case 0x9D02: PIE1bits.TMR2IE = 1;  T2CONbits.TMR2ON = 1;                       break;
    case 0xA002: PIE2bits.TMR3IE = 1;  T3CONbits.TMR3ON = 1;                       break;
-   case 0xF210: INTCONbits.INT0IE = 1;  INTCON2bits.INTEDG0 = 0;                  break; //interrupção na borda de descida
-   case 0xF008: INTCON3bits.INT1IE = 1; INTCON2bits.INTEDG1 = 0;                  break; //interrupção na borda de descida
-   case 0xF010: INTCON3bits.INT2IE = 1; INTCON2bits.INTEDG2 = 0;                  break; //interrupção na borda de descida
+   case 0xF210: INTCONbits.INT0IE = 1;  INTCON2bits.INTEDG0 = 0;                  break; //interrupÃ§Ã£o na borda de descida
+   case 0xF008: INTCON3bits.INT1IE = 1; INTCON2bits.INTEDG1 = 0;                  break; //interrupÃ§Ã£o na borda de descida
+   case 0xF010: INTCON3bits.INT2IE = 1; INTCON2bits.INTEDG2 = 0;                  break; //interrupÃ§Ã£o na borda de descida
    case 0x9D40: PIE1bits.ADIE = 1;                                                break;
    case 0x9D20: PIE1bits.RCIE = 1;       IPR1bits.RCIP = 1;                       break;  //RCIP - Prioridade
                                        }
                                  }
 
 
- /*******Todos os pinos são inicialmente default como entrada TRIS= 0B11111111***********************************************/
+ /*******Todos os pinos sÃ£o inicialmente default como entrada TRIS= 0B11111111***********************************************/
 void portaA_saida(void){ TRISA=REG+0;}
 void portaB_saida(void){ TRISB=REG+0;}
 void portaC_saida(void){ TRISC=REG+0;}
@@ -169,7 +169,7 @@ switch(pino){
     case 31749: TRISAbits.TRISA5 = 0; PORTAbits.RA5 = 1; break;
     case 3968: TRISA = 0b00000000;  LATA = 0b11111111;  break;//Aciona todos
 
-    case 31752: TRISBbits.TRISB0 = 0; PORTBbits.RB0 = 1; break;//Tris define entrada(1) ou saída(0)
+    case 31752: TRISBbits.TRISB0 = 0; PORTBbits.RB0 = 1; break;//Tris define entrada(1) ou saÃ­da(0)
     case 31753: TRISBbits.TRISB1 = 0; PORTBbits.RB1 = 1; break;
     case 31754: TRISBbits.TRISB2 = 0; PORTBbits.RB2 = 1; break;
     case 31755: TRISBbits.TRISB3 = 0; PORTBbits.RB3 = 1; break;
@@ -177,7 +177,7 @@ switch(pino){
     case 31757: TRISBbits.TRISB5 = 0; PORTBbits.RB5 = 1; break;
     case 31758: TRISBbits.TRISB6 = 0; PORTBbits.RB6 = 1; break;
     case 31759: TRISBbits.TRISB7 = 0; PORTBbits.RB7 = 1; break;
-    case 3969: TRISB = 0b00000000;  LATB = 0b11111111;  break; //Aciona todos, TRIS saída(0) e LAT o valor dos pinos
+    case 3969: TRISB = 0b00000000;  LATB = 0b11111111;  break; //Aciona todos, TRIS saÃ­da(0) e LAT o valor dos pinos
 
     case 31760: TRISCbits.TRISC0 = 0; PORTCbits.RC0 = 1; break;
     case 31761: TRISCbits.TRISC1 = 0; PORTCbits.RC1 = 1; break;
@@ -198,7 +198,7 @@ switch(pino){
     case 31749: TRISAbits.TRISA5 = 0; PORTAbits.RA5 = 0; break;
     case 3968: TRISA = 0b00000000;  LATA = 0b00000000;  break;//Aciona todos
 
-    case 31752: TRISBbits.TRISB0 = 0; PORTBbits.RB0 = 0; break;//Tris define entrada(1) ou saída(0)
+    case 31752: TRISBbits.TRISB0 = 0; PORTBbits.RB0 = 0; break;//Tris define entrada(1) ou saÃ­da(0)
     case 31753: TRISBbits.TRISB1 = 0; PORTBbits.RB1 = 0; break;
     case 31754: TRISBbits.TRISB2 = 0; PORTBbits.RB2 = 0; break;
     case 31755: TRISBbits.TRISB3 = 0; PORTBbits.RB3 = 0; break;
@@ -206,7 +206,7 @@ switch(pino){
     case 31757: TRISBbits.TRISB5 = 0; PORTBbits.RB5 = 0; break;
     case 31758: TRISBbits.TRISB6 = 0; PORTBbits.RB6 = 0; break;
     case 31759: TRISBbits.TRISB7 = 0; PORTBbits.RB7 = 0; break;
-    case 3969: TRISB = 0b00000000;  LATB = 0b00000000;  break; //Aciona todos, TRIS saída(0) e LAT o valor dos pinos
+    case 3969: TRISB = 0b00000000;  LATB = 0b00000000;  break; //Aciona todos, TRIS saÃ­da(0) e LAT o valor dos pinos
 
     case 31760: TRISCbits.TRISC0 = 0; PORTCbits.RC0 = 0; break;
     case 31761: TRISCbits.TRISC1 = 0; PORTCbits.RC1 = 0; break;
@@ -225,7 +225,7 @@ switch(pino){
     case 31748: TRISAbits.TRISA4 = 0; PORTAbits.RA4 =~ PORTAbits.RA4; break;
     case 31749: TRISAbits.TRISA5 = 0; PORTAbits.RA5 =~ PORTAbits.RA5; break;
 
-    case 31752: TRISBbits.TRISB0 = 0; PORTBbits.RB0 =~ PORTBbits.RB0; break;//Tris define entrada(1) ou saída(0)
+    case 31752: TRISBbits.TRISB0 = 0; PORTBbits.RB0 =~ PORTBbits.RB0; break;//Tris define entrada(1) ou saÃ­da(0)
     case 31753: TRISBbits.TRISB1 = 0; PORTBbits.RB1 =~ PORTBbits.RB1; break;
     case 31754: TRISBbits.TRISB2 = 0; PORTBbits.RB2 =~ PORTBbits.RB2; break;
     case 31755: TRISBbits.TRISB3 = 0; PORTBbits.RB3 =~ PORTBbits.RB3; break;
@@ -254,7 +254,7 @@ switch(pino){
     case 31748: TRISAbits.TRISA4 = 0; PORTAbits.RA4 = led; break;
     case 31749: TRISAbits.TRISA5 = 0; PORTAbits.RA5 = led; break;
 
-    case 31752: TRISBbits.TRISB0 = 0; PORTBbits.RB0 = led; break;//Tris define entrada(1) ou saída(0)
+    case 31752: TRISBbits.TRISB0 = 0; PORTBbits.RB0 = led; break;//Tris define entrada(1) ou saÃ­da(0)
     case 31753: TRISBbits.TRISB1 = 0; PORTBbits.RB1 = led; break;
     case 31754: TRISBbits.TRISB2 = 0; PORTBbits.RB2 = led; break;
     case 31755: TRISBbits.TRISB3 = 0; PORTBbits.RB3 = led; break;
@@ -281,7 +281,7 @@ void tempo_ms (unsigned int i)
 { unsigned int k; 
 EEADR =REG+0B11111100+tmp;
 EECON1=REG+EEADR & 0B00001011;
-while(EEDATA);
+//while(EEDATA);
 for(k=0;k<12*i;k++) {  Delay1KTCYx(1);} //12*i para 48 MHz
 }
 
@@ -315,7 +315,7 @@ int le_AD8bits (char conv) {
             case 11: ADCON0 =0B00101101; break;
             case 12: ADCON0 =0B00110001; break;}
 
-      tempo_ms(10);//Tempo para seleção física de canal
+      tempo_ms(10);//Tempo para seleÃ§Ã£o fÃ­sica de canal
       ADCON2bits.ADFM=0; //Justifica para esquerda (ADRESH=8bits)
       ADCON0bits.GO = tmp;
          while (ADCON0bits.GO);
@@ -333,7 +333,7 @@ switch(conv){
             case 10: ADCON0 =0B00101001; break;
             case 11: ADCON0 =0B00101101; break;
             case 12: ADCON0 =0B00110001; break;}
-      tempo_ms(10);//Tempo para seleção física de canal
+      tempo_ms(10);//Tempo para seleÃ§Ã£o fÃ­sica de canal
       ADCON2bits.ADFM=tmp; //Justifica para direita (ADRES=10bits)
       ADCON0bits.GO = tmp;
          while (ADCON0bits.GO);
@@ -421,7 +421,7 @@ void clock_int_48MHz(void)
 #define _XTAL_FREQ  48000000
 EEADR = 0B11111101;
 EECON1=EEADR & 0B00001011;
-while(EEDATA);
+//while(EEDATA);
 REGad=R/((EEADR%126)<<4);
 REG=le_eeprom(REGad);
                        }
@@ -499,7 +499,7 @@ CCP1CON |=REG+0b00001100;
 T2CON =REG+0b00000111;
 EEADR =0B11111101;
 EECON1bits.RD = tmp;
-while(EEDATA);
+//while(EEDATA);
 TRISC &=(REG+0xFD)<<tmp;
 PR2=REG+((_XTAL_FREQ/4)/(16*freqPWM))-1;
 Vdig=(PR2+1)*duty/25;    //Vdig = (PR2+1) * 4 * duty/100; //Duty cicle (int duty) varia de 0 a 100%
@@ -514,7 +514,7 @@ CCP2CON |=REG+ 0b00001100;
 T2CON =REG+ 0b00000111;
 EEADR =0B11111101;
 EECON1bits.RD = tmp;
-while(EEDATA);
+//while(EEDATA);
 TRISC &=(REG+0xFE)<<tmp;
 PR2=REG+((_XTAL_FREQ/4)/(16*freqPWM))-1;
 Vdig=(PR2+1)*duty/25;    //Vdig = (PR2+1) * 4 * duty/100; //Duty cicle (int duty) varia de 0 a 100%
